@@ -1,0 +1,27 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "Thinkful Unit 1.4.7 Blog API Challenge ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmpal78/blog-api.git"
+  },
+  "author": "Matt Palumbo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmpal78/blog-api/issues"
+  },
+  "homepage": "https://github.com/mmpal78/blog-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.8.1"
+  }
+}
