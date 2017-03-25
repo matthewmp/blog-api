@@ -1,1 +1,40 @@
-<h1> Blog API </h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+	<header>
+		<h1> Blog API </h1>
+
+		<button class="btn-show-posts">Show Blog Posts</button>
+		<button class="btn-create-post">Create Post</button>
+
+	</header>	
+
+	<section class="blog-post-wrapper view"></section>
+	<section class="create-post-wrapper view">
+		<h2>Create Your Post</h2>
+		<form class="create-post-form">
+			<label for="inp-post-title">Title</label>
+			<input class="create-post-title" name="inp-post-title" required>
+
+			<label for="inp-post-author">Author</label>
+			<input class="create-post-author" name="inp-post-author" required>
+
+			<label for="inp-post-content">Content</label>
+			<textarea class="create-post-content" name="inp-post-content" rows="15" cols="100" required></textarea> 
+
+			<button type="submit">Submit</button>
+		</form>
+		
+	</section>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="client.js" type="text/javascript"></script>
+
+</body>
+</html>
