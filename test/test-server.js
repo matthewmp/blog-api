@@ -87,7 +87,7 @@ describe('Blog Posts', function(){
 			.delete(`/blog-posts/${res.body[0].id}`)
 		})
 		.then(function(res){
-			res.should.have.status(204);
+			res.should.have.status(200);
 		})
 	})
 })
