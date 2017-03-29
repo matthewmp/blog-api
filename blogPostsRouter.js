@@ -14,6 +14,7 @@ BlogPosts.create("Blog 3", "Here is the final blog post", "Famous Writter");
 
 
 router.get('/', (req, res)=> {
+	console.log(`GET REQ: ${JSON.stringify(BlogPosts.get())}`)
 	res.json(BlogPosts.get());
 });
 
@@ -32,14 +33,13 @@ router.post('/', jsonParser, (req, res) => {
 });
 
 router.delete('/:id', (req, res)=> {
-	BlogPosts.delete(req.params.id);
-	//console.log(`Deleteing post ${req.params.id}`);
+	BlogPosts.delete(req.params.id);	
 	res.send(`Deleteing post ${req.params.id}`);
 	res.status(204).end();
 });
 
 
-router.put('/:id', jsonParser, (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {	
 	const requiredFields = ['title', 'content', 'author'];
 	for(let i = 0; i < requiredFields.length; i++){
 		const field = requiredFields[i];
@@ -60,6 +60,7 @@ router.put('/:id', jsonParser, (req, res) => {
 		content: req.body.content,
 		author: req.body.author
 	});
+	console.log(updatedPost)
 	res.status(204).json(updatedPost); 
 });
 
