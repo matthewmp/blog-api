@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: lBtuaaOQmo43HfbADLVmWC2G/RYHbR+Jso+m4QthFYuolUFaCJW489VOSQ+ohC/pkrDxSyTGqCBwrFQC+T3wKoZwRvUtBQ9FNw3hSanbTPiV2oqpYevB5NrB3Ha1Kny0iUeVEOAu5uofXGmg4+gKZ2llCg0Fz13xyJiypgCBCPbsRmxdrpNZQ54fLxGx/OQ00JdLB3MdKHXnFQwosiZSPKVZnIlJoiX/nRdL8Q1DiyBsOXGYCaEFJDL7g2VmXQ9Xgq4XaWW2D+tUAmXnCIT6BSi94A6FMt9n+iY1GOLvj8P7droynpaVxNW+9ATlPXsH2ILamqVJAhQ8aofKkhVjKlC2AI90LtteO3PqQpuWb0XQrN5qHREcsg/KIa3cb1/fkqVKdA9HWXoHn/v7B9rS58bx4RPIuidNc7Etc720lg8bSS6ujh7+CWbkWAe5tF2qmHj0chjD7HL4XvPHcPrI3Cge3vJLzjd1yf1LQ+cQCZuS7oqTVeWFbYZiRVeWcTZs9S/nPySZqC3upP2tH+81HElhNixfQi7KC0PgkXSoiDWCbOvcZRhnwNBOuiKvfBjioIy4C4DqB4sswZc0/xX7tHinAhAb40LpYI/kkLVGcnIg+ybI7pgzLvwnxUoul3rD51El2xvaGxE5qKh+C6SgxZWDIl2Y98szGeKJq1rx9Yw=
+  app: blogapi1-5-4
+  on:
+    repo: mmpal78/blog-api
