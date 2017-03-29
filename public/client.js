@@ -4,19 +4,8 @@ const state = {
 		title: '',
 		author: '',
 		content: ''
-	},
-	sendPOST: function(){
-		console.log(this.newPost)
-		$.ajax({
-			method: 'POST',
-			url: '/blog-posts',
-			data: JSON.stringify(this.newPost),
-			succes: GETposts(),
-			dataType: 'json',
-			contentType: 'application/json'
-		})
 	}
-}
+};
 
 
 
@@ -25,7 +14,8 @@ const postTemplate =
     <p class="post-info-title"> Title: <span class="js-post-title"></span></p>
     <p class="post-info-author"> Author: <span class="js-post-author"></span></p>
     <p class="js-post-content"></p>
-    <button>Delete</button>
+    <button class="btn-delete-post">Delete</button>
+    <button class="btn-put-post">Edit</button>
   </article>`;
 
 // HTTP Requests
@@ -36,8 +26,43 @@ function GETposts(){
 		});
 };
 
+function sendPOST(){	
+	$.ajax({
+		method: 'POST',
+		url: '/blog-posts',
+		data: JSON.stringify(state.newPost),
+		succes: POSTtimer(),
+		dataType: 'json',
+		contentType: 'application/json'
+	})
+}
+
+function POSTtimer(){
+	console.log('sdf')
+	setTimeout(GETposts, 400);
+}
+
+
+function DELETEpost(id){		
+	console.log(`/blog-posts/${id}`)
+	$.ajax({		
+		method: 'DELETE',
+		url: '/blog-posts/' + id,
+		success: POSTtimer()
+	});
+};
+
+function PUTpost(id){
+	$.ajax({
+		method: 'PUT',
+		url: url: '/blog-posts/' + id,
+		success: POSTtimer()
+	})
+}
+
 // State Functions
 function stateGETposts(posts){	
+	state.posts = [];
 	posts.forEach(post => {
 		state.posts.push(post);
 	});	
@@ -46,11 +71,12 @@ function stateGETposts(posts){
 };
 
 function statePOSTnew(title, author, content){
+	state.newPost = {};
 	let post = state.newPost;
 	post.title = title;
 	post.author = author;
 	post.content = content;
-	state.sendPOST();
+	sendPOST();
 };
 
 
@@ -87,9 +113,28 @@ function handleNewPOST(){
 	})
 }
 
+function handleDeleteEvent(){
+	$(document).on('click', '.btn-delete-post', function(e){
+		e.preventDefault();
+		let article = e.target.closest('article');				
+		let id = article.getAttribute('id');
+		DELETEpost(id);
+	})
+}
+
+function handlePUT(){
+	$(document).on('click', '.btn-put-post', function(e){
+		e.preventDefault();
+		let article = e.target.closest('article');
+		let id = article.getAttribute('id');
+		PUTpost(id);
+	});
+}
 
 
 $(function(){
 	handleGETallPosts();
 	handleNewPOST();
+	handleDeleteEvent();
+	handlePUT();
 });
