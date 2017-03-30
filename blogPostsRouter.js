@@ -34,7 +34,7 @@ router.post('/', jsonParser, (req, res) => {
 
 router.delete('/:id', (req, res)=> {
 	BlogPosts.delete(req.params.id);	
-	res.send(`Deleteing post ${req.params.id}`);
+	console.log(`Deleteing post ${req.params.id}`);
 	res.status(204).end();
 });
 
